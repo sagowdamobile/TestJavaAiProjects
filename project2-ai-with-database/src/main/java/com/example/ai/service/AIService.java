@@ -14,6 +14,8 @@ import java.util.UUID;
  * This demonstrates a simple AI system that learns from and stores conversations in a database.
  */
 public class AIService {
+    private static final double CONFIDENCE_INCREMENT = 0.1;
+    
     private final KnowledgeRepository knowledgeRepository;
     private final ConversationRepository conversationRepository;
     private final String sessionId;
@@ -41,7 +43,7 @@ public class AIService {
             response = bestMatch.getAnswer();
             
             // Update confidence score
-            bestMatch.setConfidenceScore(bestMatch.getConfidenceScore() + 0.1);
+            bestMatch.setConfidenceScore(bestMatch.getConfidenceScore() + CONFIDENCE_INCREMENT);
             knowledgeRepository.update(bestMatch);
         } else {
             // Generate a default response

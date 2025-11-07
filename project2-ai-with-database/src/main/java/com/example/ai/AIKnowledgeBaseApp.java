@@ -196,7 +196,11 @@ public class AIKnowledgeBaseApp {
         } else {
             for (Conversation conv : conversations) {
                 System.out.println("\nID: " + conv.getId());
-                System.out.println("Session: " + conv.getSessionId().substring(0, 8) + "...");
+                String sessionIdDisplay = conv.getSessionId();
+                if (sessionIdDisplay != null && sessionIdDisplay.length() > 8) {
+                    sessionIdDisplay = sessionIdDisplay.substring(0, 8) + "...";
+                }
+                System.out.println("Session: " + sessionIdDisplay);
                 System.out.println("Time: " + conv.getTimestamp());
                 System.out.println("User: " + conv.getUserQuery());
                 System.out.println("AI: " + conv.getAiResponse());

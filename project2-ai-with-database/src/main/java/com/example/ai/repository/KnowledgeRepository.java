@@ -109,7 +109,7 @@ public class KnowledgeRepository {
                 transaction.commit();
                 return true;
             }
-            transaction.rollback();
+            transaction.commit();
             return false;
         } catch (Exception e) {
             if (transaction.isActive()) {
